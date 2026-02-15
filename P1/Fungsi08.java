@@ -1,12 +1,14 @@
 package P1;
 
+import java.util.Scanner;
+
 public class Fungsi08 {
 
     static int hitungPendapatan(int aglonema, int keladi, int alocasia, int mawar) {
         return (aglonema * 75000)
-             + (keladi * 50000)
-             + (alocasia * 60000)
-             + (mawar * 10000);
+                + (keladi * 50000)
+                + (alocasia * 60000)
+                + (mawar * 10000);
     }
 
     static String cekStatus(int pendapatan) {
@@ -18,29 +20,26 @@ public class Fungsi08 {
     }
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
-        int[][] data = {
-            {10, 5, 15, 7},   
-            {6, 11, 9, 12},   
-            {2, 10, 10, 5},   
-            {5, 7, 12, 9}     
-        };
+        for (int i = 1; i <= 4; i++) {
+            System.out.println("=== RoyalGarden " + i + " ===");
 
-        String[] cabang = {
-            "RoyalGarden 1",
-            "RoyalGarden 2",
-            "RoyalGarden 3",
-            "RoyalGarden 4"
-        };
+            System.out.print("Jumlah Aglonema: ");
+            int ag = input.nextInt();
 
-        for (int i = 0; i < data.length; i++) {
-            int total = hitungPendapatan(
-                data[i][0], data[i][1], data[i][2], data[i][3]
-            );
+            System.out.print("Jumlah Keladi: ");
+            int ke = input.nextInt();
 
+            System.out.print("Jumlah Alocasia: ");
+            int al = input.nextInt();
+
+            System.out.print("Jumlah Mawar: ");
+            int ma = input.nextInt();
+
+            int total = hitungPendapatan(ag, ke, al, ma);
             String status = cekStatus(total);
 
-            System.out.println(cabang[i]);
             System.out.println("Pendapatan: Rp" + total);
             System.out.println("Status: " + status);
             System.out.println();
