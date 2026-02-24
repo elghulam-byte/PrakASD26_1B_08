@@ -1,31 +1,35 @@
 package P2;
 
 public class Mahasiswa08 {
-
-    String nim;
     String nama;
-    String prodi;
+    String nim;
+    String kelas;
     double ipk;
 
-    public Mahasiswa08() {
-
-    }
-
-    public Mahasiswa08(String nim, String nama, String prodi, double ipk) {
-        this.nim = nim;
-        this.nama = nama;
-        this.prodi = prodi;
-        this.ipk = ipk;
-    }
-
-    public void tampilData() {
-        System.out.println("NIM   : " + nim);
+    void tampilkanInformasi() {
         System.out.println("Nama  : " + nama);
-        System.out.println("Prodi : " + prodi);
+        System.out.println("NIM   : " + nim);
+        System.out.println("Kelas : " + kelas);
         System.out.println("IPK   : " + ipk);
     }
 
-    public void ubahIPK(double ipkBaru) {
-        this.ipk = ipkBaru;
+    void ubahKelas(String kelasBaru) {
+        kelas = kelasBaru;
+    }
+
+    void updateIpk(double ipkBaru) {
+        ipk = ipkBaru;
+    }
+
+    String nilaiKinerja() {
+        if (ipk >= 3.5) {
+            return "Kinerja sangat baik";
+        } else if (ipk >= 3.0) {
+            return "Kinerja baik";
+        } else if (ipk >= 2.0) {
+            return "Kinerja cukup";
+        } else {
+            return "Kinerja kurang";
+        }
     }
 }
