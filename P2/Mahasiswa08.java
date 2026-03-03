@@ -1,10 +1,10 @@
 package P2;
 
 public class Mahasiswa08 {
-    String nama;
-    String nim;
-    String kelas;
-    double ipk;
+    public String nama;
+    public String nim;
+    public String kelas;
+    public double ipk;
 
     public Mahasiswa08() {
     }
@@ -45,5 +45,8 @@ public class Mahasiswa08 {
         } else {
             return "Kinerja kurang";
         }
+    }
+
+    public void cetakInfo() {
     }
 }
