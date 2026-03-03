@@ -6,10 +6,9 @@ public class DosenDemo08 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Dosen08[] arrayOfDosen = new Dosen08[3];
-        String kode, nama, dummy, jkInput;
-        boolean jenisKelamin;
+        String kode, nama, jkInput;
         int usia;
-        
+
         for (int i = 0; i < 3; i++) {
             System.out.println("Masukkan Data Dosen ke-" + (i + 1));
             System.out.print("Kode          : ");
@@ -18,26 +17,19 @@ public class DosenDemo08 {
             nama = sc.nextLine();
             System.out.print("Jenis Kelamin (Pria/Wanita) : ");
             jkInput = sc.nextLine();
-            
-            jenisKelamin = jkInput.equalsIgnoreCase("Pria");
-            
             System.out.print("Usia          : ");
-            dummy = sc.nextLine();
-            usia = Integer.parseInt(dummy);
+            usia = Integer.parseInt(sc.nextLine());
             System.out.println("--------------------------------");
 
-            arrayOfDosen[i] = new Dosen08(kode, nama, jenisKelamin, usia);
+            boolean jk = jkInput.equalsIgnoreCase("Pria");
+            arrayOfDosen[i] = new Dosen08(kode, nama, jk, usia);
         }
 
-        int counter = 1;
-        for (Dosen08 dosen : arrayOfDosen) {
-            System.out.println("Data Dosen ke-" + counter);
-            System.out.println("Kode          : " + dosen.kode);
-            System.out.println("Nama          : " + dosen.nama);
-            System.out.println("Jenis Kelamin : " + (dosen.jenisKelamin ? "Pria" : "Wanita"));
-            System.out.println("Usia          : " + dosen.usia);
-            System.out.println("--------------------------------");
-            counter++;
-        }
+        DataDosen08 dataDosen = new DataDosen08();
+        dataDosen.dataSemuaDosen(arrayOfDosen);
+        dataDosen.jumlahDosenPerJenisKelamin(arrayOfDosen);
+        dataDosen.rerataUsiaDosenPerJenisKelamin(arrayOfDosen);
+        dataDosen.infoDosenPalingTua(arrayOfDosen);
+        dataDosen.infoDosenPalingMuda(arrayOfDosen);
     }
 }
