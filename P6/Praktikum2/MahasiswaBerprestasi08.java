@@ -1,8 +1,12 @@
 package P6.Praktikum2;
 
 public class MahasiswaBerprestasi08 {
-    Mahasiswa08[] listMhs = new Mahasiswa08[5];
+    Mahasiswa08[] listMhs;
     int idx;
+
+    MahasiswaBerprestasi08(int jumlah) {
+        listMhs = new Mahasiswa08[jumlah];
+    }
 
     void tambah(Mahasiswa08 m) {
         if (idx < listMhs.length) {
@@ -15,8 +19,10 @@ public class MahasiswaBerprestasi08 {
 
     void tampil() {
         for (Mahasiswa08 m : listMhs) {
-            m.tampilInformasi();
-            System.out.println("-----------------------------------------");
+            if (m != null) {
+                m.tampilInformasi();
+                System.out.println("--------------------------------");
+            }
         }
     }
 
