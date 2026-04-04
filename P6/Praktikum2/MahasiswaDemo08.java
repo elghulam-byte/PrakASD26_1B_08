@@ -35,8 +35,8 @@ public class MahasiswaDemo08 {
         System.out.println("\nData mahasiswa sebelum sorting:");
         list.tampil();
 
-        System.out.println("\nData mahasiswa setelah sorting (IPK DESC):");
-        list.bubbleSort();
+        System.out.println( "Data yang sudah terurut menggunakan SELECTION SORT (ASC)");
+        list.selectionSort();
         list.tampil();
     }
 }
