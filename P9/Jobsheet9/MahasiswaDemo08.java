@@ -60,7 +60,10 @@ public class MahasiswaDemo08 {
                         System.out.println("Mahasiswa pertama yang mengumpulkan adalah : " + bawah.nama);
                     }
                     break;
-
+                case 6:
+                    int jumlah = stack.jumlahTugas();
+                    System.out.println("Jumlah tugas yang ada di tumpukan saat ini: " + jumlah);
+                    break;
                 default:
                     System.out.println("Pilihan tidak valid");
             }
