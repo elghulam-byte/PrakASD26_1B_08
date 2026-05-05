@@ -62,4 +62,8 @@ public class StackTugasMahasiswa08 {
             return top + 1;
         }
     }
+
+    public String konversiDesimalKeBiner(int nilai) {
+        throw new UnsupportedOperationException("Unimplemented method 'konversiDesimalKeBiner'");
+    }
 }
