@@ -6,13 +6,14 @@ public class AntrianLayanan08 {
     int rear;
     int size;
     int max;
+    int jumlahSudahKRS = 0; 
 
-    public AntrianLayanan08(int max) {
-        this.max = max;
-        this.data = new Mahasiswa08[max];
-        this.front = 0;
-        this.rear = -1;
-        this.size = 0;
+    public AntrianLayanan08(int n) {
+        max = n;
+        data = new Mahasiswa08[max];
+        size = 0;
+        front = 0;
+        rear = -1;
     }
 
     public boolean isEmpty() {
@@ -25,51 +26,75 @@ public class AntrianLayanan08 {
 
     public void tambahAntrian(Mahasiswa08 mhs) {
         if (isFull()) {
-            System.out.println("Antrian penuh, tidak dapat menambah mahasiswa.");
-            return;
-        }
-        rear = (rear + 1) % max;
-        data[rear] = mhs;
-        size++;
-        System.out.println(mhs.nama + " berhasil masuk ke antrian.");
-    }
-
-    public Mahasiswa08 layaniMahasiswa() {
-        if (isEmpty()) {
-            System.out.println("Antrian kosong.");
-            return null;
-        }
-        Mahasiswa08 mhs = data[front];
-        front = (front + 1) % max;
-        size--;
-        return mhs;
-    }
-
-    public void lihatTerdepan() {
-        if (isEmpty()) {
-            System.out.println("Antrian kosong.");
+            System.out.println("Antrean sudah penuh!");
         } else {
-            System.out.println("Mahasiswa terdepan: ");
-            System.out.println("NIM\tNAMA\tPRODI\tKELAS");
-            data[front].tampilkanData();
+            rear = (rear + 1) % max;
+            data[rear] = mhs;
+            size++;
+            System.out.println("Mahasiswa " + mhs.nama + " masuk antrean.");
+        }
+    }
+
+    public void panggilAntreanKRS() {
+        if (isEmpty()) {
+            System.out.println("Antrean kosong!");
+        } else {
+            int jmlDiproses = (size >= 2) ? 2 : 1;
+            System.out.println("--- Memproses Persetujuan KRS ---");
+            for (int i = 0; i < jmlDiproses; i++) {
+                Mahasiswa08 m = data[front];
+                System.out.print("Selesai diproses: ");
+                m.tampilkanData();
+                front = (front + 1) % max;
+                size--;
+                jumlahSudahKRS++; 
+            }
         }
     }
 
     public void tampilkanSemua() {
         if (isEmpty()) {
-            System.out.println("Antrian kosong.");
-            return;
-        }
-        System.out.println("Daftar Mahasiswa dalam Antrian:");
-        System.out.println("NIM\tNAMA\tPRODI\tKELAS");
-        for (int i = 0; i < size; i++) {
-            int index = (front + i) % max;
-            System.out.print((i + 1) + ". ");
-            data[index].tampilkanData();
+            System.out.println("Antrean kosong.");
+        } else {
+            System.out.println("Daftar Antrean:");
+            for (int i = 0; i < size; i++) {
+                int index = (front + i) % max;
+                data[index].tampilkanData();
+            }
         }
     }
 
-    public int getJumlahAntrian() {
-        return size;
+    public void tampilkanDuaTerdepan() {
+        if (isEmpty()) {
+            System.out.println("Antrean kosong.");
+        } else {
+            int limit = (size >= 2) ? 2 : 1;
+            System.out.println("2 Mahasiswa di urutan terdepan:");
+            for (int i = 0; i < limit; i++) {
+                int index = (front + i) % max;
+                data[index].tampilkanData();
+            }
+        }
+    }
+
+    public void lihatAkhir() {
+        if (isEmpty()) {
+            System.out.println("Antrean kosong.");
+        } else {
+            System.out.print("Mahasiswa urutan terakhir: ");
+            data[rear].tampilkanData();
+        }
+    }
+
+    public void cetakStatus() {
+        System.out.println("Jumlah mahasiswa dalam antrean: " + size);
+        System.out.println("Total mahasiswa sudah proses KRS: " + jumlahSudahKRS);
+    }
+
+    public void clear() {
+        front = 0;
+        rear = -1;
+        size = 0;
+        System.out.println("Antrean dikosongkan.");
     }
 }
