@@ -78,6 +78,9 @@ public class SistemPeminjaman08 {
                     if (!found)
                         System.out.println("Data tidak ditemukan.");
                     break;
+                case 6:
+                    System.out.println("masukkan nim : ")
+                    String cariNim = sc.next ;
             }
         } while (pilih != 0);
     }
